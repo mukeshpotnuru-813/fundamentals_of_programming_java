@@ -1,0 +1,63 @@
+A number can be said as a strong number when the sum of the factorial of the individual digits is equal to the number.
+
+For example, 145 is a strong number. 1! + 4! + 5! = 145. Write a program to check whether a given number is a strong number or not.
+
+Input Format
+
+Input consists of 1 integer.
+
+Constraints
+
+NA
+
+Output Format
+
+If it is a strong number print "Yes" or print "No".
+
+Sample Input 0
+
+145
+Sample Output 0
+
+Yes
+Explanation 0
+
+= 1! + 4! +5! = 1+24+120 = 145
+----------------------------------------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    static int factorial(int x){
+        int sum=1;
+        if(x==0){
+            sum=1;
+        }
+        else{
+        for(int i=x;i>0;i--){
+            sum*=i;
+        }}
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan=new Scanner(System.in);
+        int n=scan.nextInt();
+        int temp1=n;
+        int sum=0;
+        int temp=n;
+        while(n>0){
+            temp=n%10;
+            sum+=factorial(temp);
+            n=n/10;
+        }
+       
+        if(sum==temp1){
+            System.out.print("Yes");
+        }
+        else{
+            System.out.print("No");
+        }
+        
+    }
+}
