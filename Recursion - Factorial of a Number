@@ -1,0 +1,54 @@
+Write a program to compute the factorial of a number using recursion.
+
+Input Format
+
+Input consists of an integer.
+
+Constraints
+
+NA
+
+Output Format
+
+The output consists of an integer that corresponds to the factorial value.
+
+Sample Input 0
+
+5
+Sample Output 0
+
+The factorial of 5 is 120
+Explanation 0
+
+Since the input is 5, its factorial is 120 which will get printed.
+
+Sample Input 1
+
+10
+Sample Output 1
+
+The factorial of 10 is 3628800
+Explanation 1
+
+Since the input is 10, its factorial is 3628800 which will get printed.
+---------------------------------------------------------------------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    static int fact(int n){
+        if(n==1 || n==0){
+            return 1;
+        }
+        else{
+            return n*fact(n-1);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scan=new Scanner(System.in);
+        int n=scan.nextInt();
+        int fac=fact(n);
+        System.out.print("The factorial of "+n+" is "+fac );
+    }
+}
