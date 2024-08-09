@@ -1,0 +1,62 @@
+Mahe and Mani are playing a puzzle game with a given set of numbers. They need to find the sum of the odd number and the even number. Write a program to help them to solve the puzzle game.
+
+Input Format
+
+Input consists of n+1 integers. The first integer corresponds to ‘n’, the size of the array. The next ‘n’ integers correspond to the elements in the array. Assume that the maximum value of n is 15.
+
+Constraints
+
+NA
+
+Output Format
+
+Refer to the sample output for details.
+
+Sample Input 0
+
+5
+2
+3
+6
+8
+-1
+Sample Output 0
+
+The sum of the even numbers in the array is 16
+The sum of the odd numbers in the array is 2
+Sample Input 1
+
+4
+1
+2
+3
+-1
+Sample Output 1
+
+The sum of the even numbers in the array is 2
+The sum of the odd numbers in the array is 3
+------------------------------------------------------------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan=new Scanner(System.in);
+        int n=scan.nextInt();
+        int[] a=new int[n];
+        int odd=0,even=0;
+        for(int i=0;i<n;i++){
+            a[i]=scan.nextInt();
+            if(a[i]%2==0){
+                even+=a[i];
+            }
+            else{
+                odd+=a[i];
+            }
+        }
+        System.out.println("The sum of the even numbers in the array is "+even);
+        System.out.println("The sum of the odd numbers in the array is "+odd);
+        
+    }
+}
