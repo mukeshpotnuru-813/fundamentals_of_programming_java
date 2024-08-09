@@ -1,0 +1,95 @@
+Write a program to multiply two matrices of the same dimensions together.
+
+Input Format
+
+The first two integer inputs, m, and n represent the dimensions of both of the matrices that have to be multiplied. Next (m*n) integers represent the elements in the first matrix and followed by another (m*n) integer representing the elements in the second matrix
+
+Constraints
+
+NA
+
+Output Format
+
+The output consists of (m*n) integers representing the values of the matrix that is the product of both the input matrices.
+
+Sample Input 0
+
+3 3
+1 2 3
+4 5 6
+7 8 9
+9 8 7
+6 5 4
+3 2 1
+Sample Output 0
+
+30 24 18
+84 69 54
+138 114 90
+Sample Input 1
+
+3 3
+4 5 1 
+9 8 5
+2 5 8
+1 2 3
+4 5 6
+7 8 9
+Sample Output 1
+
+31 41 51
+76 98 120
+78 93 108
+
+-------------------------------------------------------------------------------------------
+import java.util.Scanner;  
+
+public class MatrixMultiplication {  
+
+    public static void main(String[] args) {  
+        Scanner scanner = new Scanner(System.in);  
+
+        // Input for the first matrix  
+          
+        int rowsA = scanner.nextInt();  
+          
+        int colsA = scanner.nextInt();  
+
+        int[][] matrixA = new int[rowsA][colsA];  
+          
+        for (int i = 0; i < rowsA; i++) {  
+            for (int j = 0; j < colsA; j++) {  
+                matrixA[i][j] = scanner.nextInt();  
+            }  
+        }  
+        int[][] matrixB = new int[rowsA][colsA];  
+         
+        for (int i = 0; i < rowsA; i++) {  
+            for (int j = 0; j < colsA; j++) {  
+                matrixB[i][j] = scanner.nextInt();  
+            }  
+        }  
+
+        // Resultant matrix will have dimensions (rowsA x colsB)  
+        int[][] resultMatrix = new int[rowsA][colsA];  
+
+        // Matrix multiplication  
+        for (int i = 0; i < rowsA; i++) {  
+            for (int j = 0; j < colsA; j++) {  
+                for (int k = 0; k < colsA; k++) {  
+                    resultMatrix[i][j] += matrixA[i][k] * matrixB[k][j];  
+                }  
+            }  
+        }  
+
+        
+        for (int i = 0; i < rowsA; i++) {  
+            for (int j = 0; j < colsA; j++) {  
+                System.out.print(resultMatrix[i][j] + " ");  
+            }  
+            System.out.println();  
+        }  
+
+        scanner.close();  
+    }  
+}
