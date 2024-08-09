@@ -1,0 +1,84 @@
+In the city of Toyland, there are N houses. Noddy is looking for a piece of land in the city to build his house. All the houses in the city lie in a straight line and all of them are given a house number and position of the house from the entry point of the city. Noddy wants to find the house numbers between which he can build the largest house. Write an algorithm to help Noddy to find the house numbers between which he can build his house.
+
+Hint: No two houses will have the same position in case of multiple such answers, print the one with the least distance from the reference point.
+
+Input Format
+
+The first line of the input consists of an integer num, representing the number of houses (N). The next N lines consist of two space-separated integers – house Num and pos, representing the house number and the position of the houses.
+
+Constraints
+
+2 < num < 10^6
+1 < house Num < num
+0 < pos < 10^6
+Output Format
+
+Print two space-separated integers representing the house numbers in ascending order between which the largest plot is available.
+
+Sample Input 0
+
+5
+3 7
+1 9
+2 0
+5 15
+4 30
+Sample Output 0
+
+4 5
+Sample Input 1
+
+4
+1 2
+2 3
+3 1
+4 20
+Sample Output 1
+
+2 4
+-----------------------------------------------------------------------------
+import java.io.*;
+import java.util.*;
+ class x{
+     int a;
+     int b;
+ }
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner scan=new Scanner(System.in);
+        int n=scan.nextInt();
+        x[] arr=new x[n];
+        x temp;
+        for(int i=0;i<n;i++){
+            arr[i]=new x();
+            arr[i].a=scan.nextInt();
+            arr[i].b=scan.nextInt();
+        }
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n-i-1;j++){
+                if(arr[j].b>arr[j+1].b){
+                   temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+        }
+        int max=arr[1].b-arr[0].b;
+        int k=arr[0].a,l=arr[1].a;
+        for(int i=1;i<n-1;i++){
+            if(max<(arr[i+1].b-arr[i].b)){
+                k=arr[i].a;
+                l=arr[i+1].a;
+            }
+            
+        }
+        if(k<l){
+        System.out.print(k+" "+l);
+        }
+        else{
+          System.out.print(l+" "+k);  
+        }
+    }
+}
