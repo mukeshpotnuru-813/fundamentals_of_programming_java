@@ -1,0 +1,103 @@
+Ram has a fruit shop. He has arranged some set of fruits in the column and row-wise. Ram needs to find which row and column have a maximum number of fruits. Help him to find out.
+
+Input Format
+
+Input consists of 2 integers(size of rows and columns) and 1 2D array.
+
+Constraints
+
+NA
+
+Output Format
+
+The output prints the sum of all rows and columns as well as print the row and column which has the maximum sum. Refer to the sample output.
+
+Sample Input 0
+
+3
+3
+1 6 8
+2 5 1
+3 8 2
+Sample Output 0
+
+The Sum of rows is 15 8 13
+Row 1 has a maximum sum
+The Sum of columns is 6 19 11
+Column 2 has the maximum sum
+Explanation 0
+
+Here the sum of rows and columns is 15,18,13 and 6,9,11 respectively. Then it will compare the values and print the greatest sum(row and column).
+
+Sample Input 1
+
+2
+2
+5 7
+9 7
+Sample Output 1
+
+The Sum of rows is 12 16
+Row 2 has a maximum sum
+The Sum of columns is 14 14
+Column 1 has the maximum sum
+Explanation 1
+
+Here the sum of rows and columns is 12,16 and 14,14 respectively. Then it will compare the values and print the greatest sum(row and column).
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan=new Scanner(System.in);
+        int r=scan.nextInt();
+        int c=scan.nextInt();
+        int[][] a=new int[c][r];
+        for(int i=0;i<c;i++){
+            for(int j=0;j<r;j++){
+                a[i][j]=scan.nextInt();
+            }
+        }
+        int[] rs=new int[r];
+        int[] cs=new int[c];
+        for(int i=0;i<r;i++){
+            int sum=0;
+            for(int j=0;j<c;j++){
+                sum=sum+a[i][j];
+            }
+            rs[i]=sum;
+        }
+        for(int i=0;i<c;i++){
+            int sum=0;
+            for(int j=0;j<r;j++){
+                sum=sum+a[j][i];
+            }
+            cs[i]=sum;
+        }
+        int cm=cs[0],rm=cs[0],ci=0,ri=0;
+        for(int i=0;i<c;i++){
+            if(cm<cs[i]){
+                cm=cs[i];
+                ci=i;
+            }
+        }
+        for(int i=0;i<r;i++){
+            if(rm<rs[i]){
+                rm=rs[i];
+                ri=i;
+            }
+        }
+        System.out.print("The Sum of rows is ");
+        for(int i=0;i<r;i++){
+            System.out.print(rs[i]+" ");
+        }
+        System.out.println("\nRow "+ (ri+1) +" has a maximum sum");
+        System.out.print("The Sum of columns is ");
+        for(int i=0;i<c;i++){
+            System.out.print(cs[i]+" ");
+        }
+        System.out.println("\nColumn "+ (ci+1) +" has the maximum sum");
+    }
+}
