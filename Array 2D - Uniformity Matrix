@@ -1,0 +1,63 @@
+Rohit likes to play with numbers. He started to frame a matrix called uniformity matrix where he will be using either completely odd numbers or completely even numbers but not both. Write a program to check whether he has framed the matrix in the correct order or not.
+
+Input Format
+
+The input consists of (n*n+1) integers.
+The first integer corresponds to the number of rows/columns in the matrix.
+The remaining integers correspond to the elements in the matrix.
+The elements are read in row-wise order, the first row first, then the second row, and so on.
+Constraints
+
+NA
+
+Output Format
+
+Print Yes if it is a uniformity matrix.
+Print No if it is not a uniformity matrix.
+Sample Input 0
+
+2
+4 5
+5 4
+Sample Output 0
+
+No
+Sample Input 1
+
+3
+2 4 6
+8 10 12
+14 16 18
+Sample Output 1
+
+Yes
+---------------------------------------------------------------------------------------------------------------------------------------
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan=new Scanner(System.in);
+        int n=scan.nextInt();
+        int[][] a=new int[n][n];
+        int o=0,e=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                a[i][j]=scan.nextInt();
+                if(a[i][j]%2==0){
+                    e++;
+                }
+                else{
+                    o++;
+                }
+            }
+        }
+        if(o==(n*n) || e==(n*n)){
+            System.out.print("Yes");
+        }
+        else{
+            System.out.print("No");
+        }
+    }
+}
