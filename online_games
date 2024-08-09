@@ -1,0 +1,80 @@
+You are playing an online game. In the game, a list of N numbers is given. The player has to arrange the numbers so that all the odd numbers on the list come after the even numbers. Write an algorithm to arrange the given list such that all the odd numbers of the list come after the even numbers.
+
+Input Format
+
+The first line of the input consists of an integer num, representing the size of the list(N). The second line of the input consists of N space-separated integers representing the values of the list.
+
+Constraints
+
+NA
+
+Output Format
+
+Print N space-separated integers such that all the odd numbers of the list comes after the even numbers
+
+Sample Input 0
+
+8
+10 98 3 33 12 22 21 11
+Sample Output 0
+
+Array after Segregation
+10 98 22 12 33 3 21 11
+Sample Input 1
+
+5
+73 4 63 23 65
+Sample Output 1
+
+Array after Segregation
+4 73 63 23 65
+
+--------------------------------------------------------------------------------------------------------------------------------
+import java.util.Scanner;  
+
+public class EvenOddSegregation {  
+
+    public static void main(String[] args) {  
+        Scanner scanner = new Scanner(System.in);  
+        
+        // Read the size of the array  
+        int n = scanner.nextInt();  
+        int[] a = new int[n];  
+        
+        // Read the elements of the array  
+        for (int i = 0; i < n; i++) {  
+            a[i] = scanner.nextInt();  
+        }  
+        
+        // Variables to index from both ends of the array  
+        int l = 0;  
+        int r = n - 1;  
+        
+        // Segregate even and odd numbers  
+        while (l < r) {  
+            // Move left index if it points to an even number  
+            while (a[l] % 2 == 0 && l < r) {  
+                l++;  
+            }  
+            // Move right index if it points to an odd number  
+            while (a[r] % 2 != 0 && l < r) {  
+                r--;  
+            }  
+            // Swap even and odd numbers  
+            if (l < r) {  
+                int temp = a[l];  
+                a[l] = a[r];  
+                a[r] = temp;  
+                l++;  
+                r--;  
+            }  
+        }  
+        
+        // Print the result  
+        System.out.println("Array after Segregation");  
+        for (int i = 0; i < n; i++) {  
+            System.out.print(a[i] + " ");  
+        }  
+        System.out.println(); // New line after output  
+    }  
+}
